@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -19,6 +19,11 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "Municipalities")
 public class Municipality extends BaseEntity {
+    @NotNull
     private String municipalityName;
     private Date createdAt;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "municipality_tax_id", referencedColumnName = "id")
+    private Tax tax;
 }
