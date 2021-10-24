@@ -10,7 +10,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.util.*;
 
 /**
  * @author Aurimas
@@ -35,7 +35,7 @@ public class DataLoader implements ApplicationRunner {
         Municipality municipality = new Municipality();
         municipality.setMunicipalityName("Copenhagen");
         municipality.setCreatedAt(new Date());
-        municipality.setTax(new Tax(0.2, 0.4, 0.1, municipality));
+        municipality.setTax(new Tax(0.2, 0.4, 0.1));
 
         MunicipalityServiceImpl municipalityService = new MunicipalityServiceImpl(municipalityRepository);
         municipalityService.saveMunicipality(municipality);

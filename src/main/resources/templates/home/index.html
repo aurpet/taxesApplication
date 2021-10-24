@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="layouts :: header"></div>
+    <title>Home</title>
+</head>
+<body>
+<!--default nav bar-->
+<nav th:replace="layouts :: navBar"></nav>
+
+<div class="container text-center mx-auto align-baseline">
+    <br><br><br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Municipality name</th>
+            <th>Yearly tax</th>
+            <th>Monthly tax</th>
+            <th>Daily taxes</th>
+            <th>Created at</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Municipality : ${municipalities}">
+            <td th:text="${Municipality.getId()}"/>
+            <td th:text="${Municipality.getMunicipalityName()}"/>
+            <td th:text="${Municipality.getTax().getYearlyTax()}"/>
+            <td th:text="${Municipality.getTax().getMonthlyTax()}"/>
+            <td th:text="${Municipality.getTax().getDayTax()}"/>
+            <td th:text="${Municipality.getCreatedAt()}"/>
+        </tr>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="layouts :: optionalBootstrap"></div>
+
+</body>
+</html>

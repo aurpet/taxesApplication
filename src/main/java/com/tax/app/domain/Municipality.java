@@ -1,9 +1,7 @@
 package com.tax.app.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,16 +12,16 @@ import java.util.Date;
  * @created 2021-10-24
  */
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Municipalities")
+@Table(name = "municipalities")
+@Data
 public class Municipality extends BaseEntity {
     @NotNull
     private String municipalityName;
     private Date createdAt;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "municipality_tax_id", referencedColumnName = "id")
+    @JoinColumn(name = "municipality_id")
     private Tax tax;
 }
